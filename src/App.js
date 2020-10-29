@@ -1,28 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Header from './header.js';
 import './App.scss';
+import Lose from './lose.js'
 import characters from './images.js';
+import CardCharacter from './card.js'
 
-const CardCharacter = (props) => {
-  const { image, alt, clickChar } = props;
-  return (<div className='card' onClick={() => clickChar(alt)}>
-    <img src={image} alt={alt} />
-  </div>)
-}
 
-const Lose = (props) => {
-  let { youLose, playAgain } = props;
-
-  return (
-    youLose ?
-      <div id="lose-bg">
-        <h2>You were eating by the titans</h2>
-        <div onClick={playAgain}>
-          <h2>Play again</h2>
-        </div>
-      </div> : null
-  )
-}
 
 const sortCharacters = (arr) => {
   return arr.sort(() => {
