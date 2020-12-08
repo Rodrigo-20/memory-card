@@ -59,6 +59,7 @@
     transition: all 0.3s;
     &:hover {
         transform: scale(1.1);
+       
     }
     
     img{
@@ -110,14 +111,27 @@
       left: 0px;    
       height: 100%;
       width: 100%;
+      background-image: url(https://mangathrill.com/wp-content/uploads/2020/04/maxresdefault640x360-2.jpg);
+      background-size: cover;
+      animation-name:show ;
+      animation-duration: 5s;
       background-color: rgba(0,0,0,.5);
+      @keyframes show {
+          0%{
+              opacity: 0.2;
+          }
+          100%{
+              opacity: 0.95;
+          }
+          
+      }
       h2{
           color: white;
           align-self: center;
       
       }
       div{
-          background-color: white;
+          background-color: red;
           margin: 0px auto;
           height: 10%;
           width: 15%;
@@ -126,7 +140,7 @@
           border-radius: 5px;
           cursor: pointer;
           h2{
-              color: black;
+              color: white;
           }
       }  
     }

@@ -16,7 +16,7 @@ const Header = (props) => {
                 <h2>Max Score: </h2>
                 <h2>Remaining: </h2>
                 <h2>Amount: {amount}</h2>
-                <div class="slidecontainer">
+                <div className="slidecontainer">
                     <input type="range" min="5" max="19" step="1" value={amount} class="slider" id="myRange" onChange={handleChange} />
                 </div>
             </div>
