@@ -101,8 +101,27 @@
     background: #4CAF50;
     cursor: pointer;
   }
-
-  #lose-bg {
+  .lose-bg{
+      
+      position: fixed;
+      background-image: url(https://mangathrill.com/wp-content/uploads/2020/04/maxresdefault640x360-2.jpg);
+      background-size: cover;
+      animation-name:show ;
+      animation-duration: 5s;   
+      height: 100%;
+      width: 100%;
+     
+  }
+  .win-bg {
+    position: fixed;
+    background-image: url(https://preview.redd.it/epfgl1kvigy21.jpg?width=1280&format=pjpg&auto=webp&s=5940f8d99595b62f8b161096ae322538574f8130);
+    background-size: cover;
+    animation-name:show ;
+    animation-duration: 5s;   
+    height: 100%;
+    width: 100%;
+  }
+  .end {
       position: fixed;
       display: flex;
       flex-direction: column;
@@ -111,20 +130,10 @@
       left: 0px;    
       height: 100%;
       width: 100%;
-      background-image: url(https://mangathrill.com/wp-content/uploads/2020/04/maxresdefault640x360-2.jpg);
-      background-size: cover;
-      animation-name:show ;
-      animation-duration: 5s;
+      
+      
       background-color: rgba(0,0,0,.5);
-      @keyframes show {
-          0%{
-              opacity: 0.2;
-          }
-          100%{
-              opacity: 0.95;
-          }
-          
-      }
+      
       h2{
           color: white;
           align-self: center;
@@ -143,4 +152,13 @@
               color: white;
           }
       }  
+    }
+    @keyframes show {
+        0%{
+            opacity: 0.2;
+        }
+        100%{
+            opacity: 0.95;
+        }
+        
     }

@@ -6,10 +6,16 @@ const Lose = (props) => {
 
     return (
         youLose ?
-            <div id="lose-bg">
-                <h2>You were eaten by the titans</h2>
-                <div onClick={playAgain}>
-                    <h2>Play again</h2>
+            <div className='lose-bg'>
+
+                <div className="end">
+
+
+                    <h2>You were eaten by the titans</h2>
+                    <div onClick={playAgain}>
+                        <h2>Play again</h2>
+                    </div>
+
                 </div>
 
             </div>

@@ -3,10 +3,12 @@ import { useAudio } from './useAudio.js'
 import Header from './header.js';
 import './App.scss';
 import Lose from './lose.js';
+import Win from './win.js'
 import characters from './images.js';
 import CardCharacter from './card.js';
 import loseSound from './audios/eren-eaten.mp3';
-import playSound from './audios/play.mp3'
+import playSound from './audios/play.mp3';
+import winSound from './audios/win.mp3';
 
 const sortCharacters = (arr) => {
   return arr.sort(() => {
@@ -21,15 +23,32 @@ const selectRandomValues = (arr, val) => {
 const App = () => {
   const [charClicked, setCharClicked] = useState([]);
   const [score, setScore] = useState(charClicked.length);
+  const [maxScore, setMaxScore] = useState(localStorage.getItem('maxScore') || 0);
   const [charac, setCharac] = useState(characters);
   const [lose, setLose] = useState(false);
+  const [win, setWin] = useState(false);
   const [amountOfChar, setAmountOfChar] = useState(characters.length);
   const loseAudio = useAudio(loseSound);
   const playAudio = useAudio(playSound);
+  const winAudio = useAudio(winSound);
   //const audio = new Audio(sound);
+  const youWin = () => {
+    setWin(true);
+    winAudio();
+    playAudio();
+  }
+
   useEffect(() => {
 
-    setScore(charClicked.length);
+    let currentScore = charClicked.length
+    if (currentScore - amountOfChar == 0) {
+      youWin();
+    }
+    if (maxScore < currentScore) {
+      localStorage.setItem('maxScore', currentScore);
+      setMaxScore(localStorage.getItem('maxScore'));
+    }
+    setScore(currentScore);
     setCharac(sortCharacters(charac));
   }, [charClicked, lose, amountOfChar]);
 
@@ -49,6 +68,8 @@ const App = () => {
 
   }
 
+
+
   const onClickChar = (name) => {
     charClicked.includes(name)
       ? youLose()
@@ -56,10 +77,12 @@ const App = () => {
   }
 
   const playAgain = () => {
-    loseAudio();
+    if (lose) { loseAudio() };
+    if (win) { winAudio() }
     playAudio();
     setCharClicked([]);
     setLose(false);
+    setWin(false);
 
   }
 
@@ -82,11 +105,12 @@ const App = () => {
 
   return (
     <div className='memory-app'>
-      <Header score={score} handleChange={handleChange} amount={amountOfChar} />
+      <Header score={score} handleChange={handleChange} amount={amountOfChar} maxScore={maxScore} remaining={amountOfChar - score} />
       <div className='cards-container'>
         {Cards}
       </div>
       <Lose youLose={lose} playAgain={playAgain} />
+      <Win youWin={win} playAgain={playAgain} />
       <audio source="./audios/eren-eaten.mp3"> </audio>
     </div>
   )

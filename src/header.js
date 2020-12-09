@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './images/winds.jpeg';
 
 const Header = (props) => {
-    let { score, amount, handleChange } = props
+    let { score, amount, handleChange, maxScore, remaining } = props
     return (
         <div className='header'>
             <div className='tittle'>
@@ -13,8 +13,8 @@ const Header = (props) => {
             </div>
             <div className="game-info">
                 <h2>Score: {score}</h2>
-                <h2>Max Score: </h2>
-                <h2>Remaining: </h2>
+                <h2>Max Score: {maxScore} </h2>
+                <h2>Remaining: {remaining} </h2>
                 <h2>Amount: {amount}</h2>
                 <div className="slidecontainer">
                     <input type="range" min="5" max="19" step="1" value={amount} class="slider" id="myRange" onChange={handleChange} />
